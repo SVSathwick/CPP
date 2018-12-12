@@ -39,9 +39,9 @@ public:
 
 int main()
 {
-	Contact c1("Sathwick", 33);
-	Contact c2("Sunitha", 29);
-	Contact c3("Anshuman", 1);
+	Contact c1("Sathwick", 34);
+	Contact c2("Sunitha", 30);
+	Contact c3("Anshuman", 2);
 
 	c1 = c2 = c3;
 	return 0;
