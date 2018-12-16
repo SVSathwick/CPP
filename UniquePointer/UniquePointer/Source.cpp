@@ -62,5 +62,18 @@ int main()
 		}
 	}
 
+	{
+		auto pEmployee = std::make_unique<Employee>("Anshuman", "Sivvala");
+		pEmployee->PrintDetails();
+
+		auto pEmployee2 = std::move(pEmployee);
+		pEmployee2->PrintDetails();
+
+		if (pEmployee.get() == nullptr && pEmployee2.get() != nullptr)
+		{
+			pEmployee2->PrintDetails();
+		}
+	}
+
 	return 0;
 }
