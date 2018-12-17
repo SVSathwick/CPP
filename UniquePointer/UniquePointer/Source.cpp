@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include <memory>
 #include <vector>
 
@@ -30,8 +31,21 @@ private:
 	std::string m_LastName;
 };
 
+void PrintEmployeeDetails(Employee* pEmployee)
+{
+	if (pEmployee)
+	{
+		pEmployee->PrintDetails();
+	}
+}
 
-
+void PrintEmployeeDetails(std::unique_ptr<Employee> pEmployee)
+{
+	if (pEmployee.get() != nullptr) 
+	{
+		pEmployee->PrintDetails();
+	}
+}
 
 int main()
 {
@@ -72,6 +86,35 @@ int main()
 		if (pEmployee.get() == nullptr && pEmployee2.get() != nullptr)
 		{
 			pEmployee2->PrintDetails();
+		}
+	}
+
+	{
+		auto pEmp = std::make_unique<Employee>("Sathwick", "Sivvala");
+
+		Employee* pEmp1 = pEmp.get();
+
+		Employee* pEmp2 = nullptr;
+		pEmp2 = pEmp.get();
+
+		pEmp->PrintDetails();
+		pEmp1->PrintDetails();
+		pEmp2->PrintDetails();
+	}
+
+	//Calling methods which needs a raw pointer
+	{
+		auto pEmp = std::make_unique<Employee>("Sathwick", "Sivvala");
+		PrintEmployeeDetails(pEmp.get());
+	}
+
+	//Calling a method which accepts unique_ptr
+	{
+		auto pEmp = std::make_unique<Employee>("Sathwick", "Sivvala");		
+		PrintEmployeeDetails(std::move(pEmp));
+		if (pEmp.get() != nullptr)
+		{
+			pEmp->PrintDetails();
 		}
 	}
 
