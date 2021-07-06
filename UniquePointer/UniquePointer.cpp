@@ -118,5 +118,13 @@ int main()
 		}
 	}
 
+	std::vector<int> vec1;
+	vec1.resize(10);
+	cout << "Size: " << vec1.size() << " Capacity: " << vec1.capacity() << endl;
+
+	std::vector<int> vec2;
+	vec2.reserve(10);
+	cout << "Size: " << vec2.size() << " Capacity: " << vec2.capacity() << endl;
+
 	return 0;
 }

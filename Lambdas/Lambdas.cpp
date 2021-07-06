@@ -4,6 +4,11 @@
 
 using namespace std;
 
+//C++ 14 feature - auto return type
+auto add(int x, int y) {
+    return x + y;
+}
+
 bool sortInReverse(int x, int y)
 {
     return x > y;
@@ -125,6 +130,41 @@ int main()
     }
 #pragma endregion
 
-    
+#pragma region SampleLoggerUsingLambdas
+    auto writeLine = [](const std::string& message) { cout << message << endl; };
+    writeLine("Sathwick");
+    writeLine("Sunitha");
+#pragma endregion
+ 
+#pragma region LambdaPrintGreater
+    auto printGreater = [](const int& x, const int& y) {
+        if (x > y)
+            cout << x << " is Greater than " << y << endl;
+        else if(y > x)
+            cout << y << " is Greater than " << x << endl;
+    };
+    printGreater(10, 20);
+#pragma endregion
+
+#pragma region LambdaSquare
+    auto square = [](const int& x) {return x * x; };
+    cout << square(10) << endl;
+
+    auto squarePassByRef = [](int& x) { x = x*x; };
+    int i = 20;
+    squarePassByRef(i);
+    cout << i << endl;
+#pragma endregion
+
+//C++ 14 features - Lambdas accepting auto parameters
+#pragma region LabdasAcceptingAuto
+    auto add = [](auto x, auto y) { 
+        return x + y;
+    };
+    cout << "Addition of 2 and 3: " << add(2, 3) << endl;
+    cout << "Addition of 2.2 and 3.3: " << add(2.2, 3.3) << endl;
+    cout << "Additon of x and y: " << add('x', 'y') << endl;
+#pragma endregion
+    cout << "Addition of 10 and 20: " << add(10,20) << endl;
     return 0;
 }
