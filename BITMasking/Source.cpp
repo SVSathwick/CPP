@@ -19,6 +19,8 @@ int main()
 	std::cout << "bit 2 is " << (flags.test(2) ? "on\n" : "off\n");
 	flags ^= (mask1 | mask2); // flip bits 1 and 2
 
+	flags ^= mask3;
+
 	std::cout << "bit 1 is " << (flags.test(1) ? "on\n" : "off\n");
 	std::cout << "bit 2 is " << (flags.test(2) ? "on\n" : "off\n");
 	flags |= (mask1 | mask2); // turn bits 1 and 2 on
@@ -29,6 +31,11 @@ int main()
 
 	std::cout << "bit 1 is " << (flags.test(1) ? "on\n" : "off\n");
 	std::cout << "bit 2 is " << (flags.test(2) ? "on\n" : "off\n");
+
+	if ((flags & mask0) == 0)
+		std::cout << "mask0 is NOT set" << std::endl;
+	else
+		std::cout << "mask0 is set" << std::endl;
 
 	return 0;
 }
