@@ -28,7 +28,7 @@ void printPalindromes(const std::string& str) {
 
 int main()
 {
-	/*std::string str1{"Hello"};
+	std::string str1{"hello"};
 	if (palindrome(str1)) {
 		std::cout << str1 << " is a palindrome" << std::endl;
 	}
@@ -42,8 +42,8 @@ int main()
 	}
 	else {
 		std::cout << str2 << " is NOT a palindrome" << std::endl;
-	}*/
+	}
 
-	std::string str1{"abba"};
-	printPalindromes(str1);
+	std::string str3{"abbaccad"};
+	printPalindromes(str3);
 }
