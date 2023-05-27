@@ -131,7 +131,12 @@ int main()
 #pragma endregion
 
 #pragma region SampleLoggerUsingLambdas
-    auto writeLine = [](const std::string& message) { cout << message << endl; };
+    auto writeLine = [](const std::string& message)
+    {
+        printf("Printing using Lambda: ");
+        cout << message << endl;
+    };
+
     writeLine("Sathwick");
     writeLine("Sunitha");
 #pragma endregion
@@ -148,12 +153,12 @@ int main()
 
 #pragma region LambdaSquare
     auto square = [](const int& x) {return x * x; };
-    cout << square(10) << endl;
+    cout << "square of 10 using Lambda: " << square(10) << endl;
 
     auto squarePassByRef = [](int& x) { x = x*x; };
     int i = 20;
     squarePassByRef(i);
-    cout << i << endl;
+    cout << "square of 20 using Lambda(PassByRef):" << i << endl;
 #pragma endregion
 
 //C++ 14 features - Lambdas accepting auto parameters
@@ -164,7 +169,18 @@ int main()
     cout << "Addition of 2 and 3: " << add(2, 3) << endl;
     cout << "Addition of 2.2 and 3.3: " << add(2.2, 3.3) << endl;
     cout << "Additon of x and y: " << add('x', 'y') << endl;
+    cout << "Addition of 10 and 20: " << add(10, 20) << endl;
+    cout << "Addition of x and 20: " << add('x', 20) << endl;
+    //cout << "Addition of Sathwick and Sivvala: " << add("Sathwick", "Sivvala") << endl;
 #pragma endregion
-    cout << "Addition of 10 and 20: " << add(10,20) << endl;
+
+#pragma region CountPositives
+    auto numbers = std::vector<int>{ 0, 2, -3, 5, -1, 6, 8, -4, 9 };
+    auto nPositives = std::count_if(std::begin(numbers), std::end(numbers), [](auto const n) { return n > 0; });
+
+    auto isPositive = [](int const n) {return n > 0; };
+    auto nPositives1 = std::count_if(std::begin(numbers), std::end(numbers), isPositive);
+    auto nPositives2 = std::count_if(numbers.begin(), numbers.end(), isPositive);
+#pragma endregion
     return 0;
 }
